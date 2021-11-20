@@ -1,0 +1,52 @@
+{
+  "name": "decipherer",
+  "version": "1.0.0",
+  "description": "Application used to decipher common ciphers.",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "snowpack dev",
+    "build": "snowpack build",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tehSIRius/decipherer.git"
+  },
+  "keywords": [
+    "cipher",
+    "TypeScript",
+    "pnpm",
+    "node"
+  ],
+  "author": "Patrik Dvořáček",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tehSIRius/decipherer/issues"
+  },
+  "homepage": "https://github.com/tehSIRius/decipherer#readme",
+  "devDependencies": {
+    "@snowpack/plugin-react-refresh": "^2.5.0",
+    "@snowpack/plugin-typescript": "^1.2.1",
+    "@types/jest": "^27.0.3",
+    "@types/react-dom": "^17.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "eslint-plugin-react": "^7.27.1",
+    "jest": "^27.3.1",
+    "prettier": "^2.4.1",
+    "prettier-eslint": "^13.0.0",
+    "snowpack": "^3.8.8",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^1.7.2",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "chart.js": "^3.6.0",
+    "framer-motion": "^4",
+    "react": "^18.0.0-beta-149b420f6-20211119",
+    "react-chartjs-2": "^3.3.0",
+    "react-dom": "^18.0.0-beta-149b420f6-20211119"
+  }
+}
