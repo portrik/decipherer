@@ -1,11 +1,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 
-import { ChakraProvider, SimpleGrid } from '@chakra-ui/react';
-
 import { App } from './interface';
-
-import { theme } from './state';
 
 const container = document.getElementById('root');
 if (!container) {

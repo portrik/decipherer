@@ -1,7 +1,11 @@
-export function translate(source: string, key: string[], target: string[]): string {
+export function translate(
+	source: string,
+	key: string[],
+	target: string[]
+): string {
 	let result = '';
 
-	for (const character in source.split('')) {
+	for (const character of source.split('')) {
 		if (!key.includes(character)) {
 			result += character;
 		}

@@ -9,9 +9,12 @@ export function caesar(text: string, alphabet: Alphabet, key?: number) {
 		: alphabet.characters.length;
 
 	const result: Solution[] = [];
-	const characters = alphabet.characters.split('');
+
 	for (let i = start; i < end; ++i) {
-		characters.push(characters.shift() as string);
+		const characters = alphabet.characters.split('');
+		for (let j = 0; j < i; ++j) {
+			characters.push(characters.shift() as string);
+		}
 
 		result.push({
 			cipher: 'Caesar',

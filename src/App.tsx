@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 
 import { ChakraProvider, SimpleGrid } from '@chakra-ui/react';
 
-import { Settings } from './Settings';
-import { Results } from './Results';
+import { Settings, Results } from './components';
 
-import { Alphabet, English, theme } from '../state';
-import { Ciphers } from '../ciphers';
+import { Alphabet, English, theme } from './state';
+import { Ciphers } from './ciphers';
+import { Solution } from './ciphers/Solution';
 
 export const App: React.FC = () => {
 	const [text, setText] = useState('');
 	const [alphabet, setAlphabet] = useState(English);
 	const [cipher, setCipher] = useState<keyof typeof Ciphers>('Caesar');
+	const [solutions, setSolutions] = useState<Solution[]>([]);
 
 	return (
 		<ChakraProvider theme={theme}>
@@ -25,9 +26,15 @@ export const App: React.FC = () => {
 						setAlphabet(a);
 						setCipher(c);
 					}}
+					onSolutionUpdate={(s) => setSolutions(s)}
 				/>
 
-				<Results alphabet={alphabet} cipher={cipher} text={text} />
+				<Results
+					alphabet={alphabet}
+					cipher={cipher}
+					text={text}
+					solutions={solutions}
+				/>
 			</SimpleGrid>
 		</ChakraProvider>
 	);

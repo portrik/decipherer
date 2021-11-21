@@ -10,18 +10,25 @@ import {
 	TabPanel,
 } from '@chakra-ui/react';
 
-import { Analysis } from './components';
+import { Analysis, Solutions } from './resultsComponents';
 
 import { Ciphers } from '../ciphers';
 import { Alphabet } from '../state';
+import { Solution } from '../ciphers/Solution';
 
 export interface ResultsProps {
 	text: string;
 	alphabet: Alphabet;
 	cipher: keyof typeof Ciphers;
+	solutions: Solution[];
 }
 
-export const Results: React.FC<ResultsProps> = ({ alphabet, cipher, text }) => {
+export const Results: React.FC<ResultsProps> = ({
+	alphabet,
+	cipher,
+	text,
+	solutions,
+}) => {
 	const [tab, setTab] = useState(0);
 
 	return (
@@ -47,7 +54,9 @@ export const Results: React.FC<ResultsProps> = ({ alphabet, cipher, text }) => {
 						<Analysis text={text} alphabet={alphabet} />
 					</TabPanel>
 
-					<TabPanel>Solutions</TabPanel>
+					<TabPanel>
+						<Solutions alphabet={alphabet} solutions={solutions} />
+					</TabPanel>
 				</TabPanels>
 			</Tabs>
 		</Flex>

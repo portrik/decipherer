@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Flex, Heading } from '@chakra-ui/react';
+import { Flex, Heading, Button } from '@chakra-ui/react';
 import { Line } from 'react-chartjs-2';
 
 import { calculateIndexOfCoincidence, frequency } from '../../utils';
@@ -21,6 +21,32 @@ const chartOptions = {
 
 export const Analysis: React.FC<AnalysisProps> = ({ text, alphabet }) => {
 	const [shift, setShift] = useState(0);
+
+	const updateShift = (n: number): void => {
+		let newShift = shift + n;
+
+		if (newShift < 0) {
+			newShift = alphabet.characters.length + newShift;
+		}
+
+		setShift(newShift % alphabet.characters.length);
+	};
+
+	const rotate = (arr: number[], direction: number): number[] => {
+		const result = [...arr];
+
+		if (direction < 0) {
+			for (let i = 0; i > direction; --i) {
+				result.unshift(result.pop() as number);
+			}
+		} else if (direction > 0) {
+			for (let i = 0; i < direction; ++i) {
+				result.push(result.shift() as number);
+			}
+		}
+
+		return result;
+	};
 
 	return (
 		<Flex direction="column">
@@ -49,8 +75,8 @@ export const Analysis: React.FC<AnalysisProps> = ({ text, alphabet }) => {
 								borderWidth: 1,
 							},
 							{
-								label: 'Ciphered Text',
-								data: Object.values(frequency(text, alphabet)),
+								label: 'Ciphered Text Frequency',
+								data: rotate(Object.values(frequency(text, alphabet)), shift),
 								fill: false,
 								backgroundColor: '#EDF2F7',
 								borderColor: '#EDF2F7',
@@ -59,6 +85,18 @@ export const Analysis: React.FC<AnalysisProps> = ({ text, alphabet }) => {
 						],
 					}}
 				/>
+
+				<Flex direction="row" justify="space-between" marginTop="2vh">
+					<Button colorScheme="orange" onClick={() => updateShift(1)}>
+						Shift Left
+					</Button>
+
+					<Heading size="lg">Current shift: {shift}</Heading>
+
+					<Button colorScheme="orange" onClick={() => updateShift(-1)}>
+						Shift Right
+					</Button>
+				</Flex>
 			</Flex>
 		</Flex>
 	);
