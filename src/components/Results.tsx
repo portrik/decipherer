@@ -39,7 +39,8 @@ export const Results: React.FC<ResultsProps> = ({
 				marginTop="1vh"
 				isFitted
 				colorScheme="orange"
-				height="full"
+				maxHeight="90vh"
+				overflow="scroll"
 				index={tab}
 				onChange={(v) => setTab(v)}
 			>

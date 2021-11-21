@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 
-import { App } from './interface';
+import { App } from './App';
 
 const container = document.getElementById('root');
 if (!container) {

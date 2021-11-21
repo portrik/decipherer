@@ -24,7 +24,7 @@ export const Solutions: React.FC<SolutionsProps> = ({
 	alphabet,
 }) => {
 	return (
-		<Table variant="simple">
+		<Table variant="simple" overflowX="scroll">
 			<TableCaption>
 				{solutions.length > 0 ? solutions[0].cipher : 'No'} Solutions
 			</TableCaption>
@@ -32,24 +32,28 @@ export const Solutions: React.FC<SolutionsProps> = ({
 			<Thead>
 				<Tr>
 					<Th>Key</Th>
-					<Th>Deviance from Alphabet Index of Coincidence</Th>
+					<Th>Index of Coincidence Deviance</Th>
 					<Th>Text</Th>
 				</Tr>
 			</Thead>
 
 			<Tbody maxHeight="80vh" overflow="scroll">
-				{solutions.map((s) => (
-					<Tr>
-						<Td>{s.key}</Td>
-						<Td>
-							{Math.abs(
-								alphabet.indexOfCoincidence -
-									calculateIndexOfCoincidence(s.text, alphabet)
-							)}
-						</Td>
-						<Td>{s.text}</Td>
-					</Tr>
-				))}
+				{solutions
+					.map((s) => ({
+						...s,
+						index: Math.abs(
+							alphabet.indexOfCoincidence -
+								calculateIndexOfCoincidence(s.text, alphabet)
+						),
+					}))
+					.sort((a, b) => a.index - b.index)
+					.map((s) => (
+						<Tr>
+							<Td>{s.key}</Td>
+							<Td>{s.index}</Td>
+							<Td>{s.text}</Td>
+						</Tr>
+					))}
 			</Tbody>
 		</Table>
 	);

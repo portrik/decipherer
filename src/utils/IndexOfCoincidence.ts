@@ -13,7 +13,5 @@ export function calculateIndexOfCoincidence(
 		incidence += count * (count - 1);
 	}
 
-	console.log({ incidence, length });
-
 	return length > 0 ? incidence / (length * (length - 1)) : 0;
 }

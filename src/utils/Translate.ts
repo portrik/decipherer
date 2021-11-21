@@ -8,6 +8,7 @@ export function translate(
 	for (const character of source.split('')) {
 		if (!key.includes(character)) {
 			result += character;
+			continue;
 		}
 
 		const index = key.indexOf(character);
