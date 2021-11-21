@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Flex } from '@chakra-ui/react';
 
+import { Keyword } from './Keyword';
 import { Caesar } from './Caesar';
 import { Affine } from './Affine';
 
@@ -32,6 +33,14 @@ export const CipherSettings: React.FC<CipherSettingsProps> = ({
 		case 'Affine':
 			return (
 				<Affine alphabet={alphabet} text={text} onUpdate={onSolutionUpdate} />
+			);
+		case 'Keyword':
+			return (
+				<Keyword
+					alphabet={alphabet}
+					text={text}
+					onUpdate={onSolutionUpdate}
+				/>
 			);
 		default:
 			return <p>No cipher selected!</p>;

@@ -12,8 +12,8 @@ import {
 } from '@chakra-ui/react';
 
 import { Solution } from '../../ciphers/Solution';
-import { Alphabet } from '../../state';
 import { caesar } from '../../ciphers/Caesar';
+import { Alphabet } from '../../state';
 
 export interface CaesarProps {
 	text: string;
